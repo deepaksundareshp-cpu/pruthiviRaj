@@ -54,6 +54,15 @@ body, html {
 .letter { transition: opacity 2s ease; display: inline-block; white-space: pre; }
 .fade-out { opacity: 0 !important; }
 
+.letter { 
+    transition: opacity 2s ease; 
+    display: inline-block; 
+    white-space: pre;
+    /* Light blue glow effect */
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 191, 255, 0.8), 0 0 15px rgba(0, 191, 255, 0.5);
+}
+
 /* Cinematic Finale */
 .heavy-meteor {
     position: fixed; width: 55px; height: 55px;
