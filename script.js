@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
    // 5. Typing Logic
-    const fullText = `We met as diploma students, two people in the same class who barely even noticed each other. I don’t even remember when I realized you were my classmate — maybe it was second year… or maybe some memories fade, but the important ones somehow stay.\n\nWhat I’ll never forget is this — you saved me in ways you’ll probably never fully understand.\n\nWhen I was struggling with exams, when I didn’t know what to do, you were the first person I reached out to. Not because we were the closest… but because somewhere inside, I felt you would understand. And you did. You helped me without hesitation, without making me feel small, without expecting anything back.\n\nSometimes I sit and think… what if I hadn’t messaged you that day? Maybe I would have written re-exams. Maybe I would’ve wasted another year. But I did reach out. And you were there. That one decision changed so much for me.\n\nFrom that day, something shifted. Everything between us became this quiet, beautiful secret — the late conversations, the small updates, the way we warned each other about who talks behind our backs, the silent support during tough days. It was never loud. Never dramatic. But it was real.\n\nWe’ve always had different paths, different dreams, different directions in life. And maybe that’s okay. Maybe not everything beautiful is meant to be complicated. Some bonds are just meant to exist softly — somewhere between friendship .\n\n inside jokes and casual talks. And maybe that’s the beauty of it. Not everything needs a label to be meaningful.\n\nI’m really sorry I couldn’t wish you on your birthday. You deserved better from me. But even if I’m late — happy birthday, IYER. You truly are one of the best people to have walked into my life.\n\nAnd honestly… I’m still waiting for that party. 😊`;
+    const fullText = `I don’t even know where to start...\n\nWe met as school friends, but sometimes a thought passes through my mind: I wish we weren’t. I wish we’d met somewhere else, or maybe not at all, because I would’ve traded being "school friends" just for a chance to actually tell you I liked you.\n\nI never could express it back then—it felt like every other classmate was into you, so I just kept it all inside. I still remember the smallest things. The insults we traded, meeting your brother, even watching you on the sports field... I still wonder, were you actually trying to play, or just looking for a way to cut class?\n\nThen time faded. School ended. I remember you in that blue saree at the farewell. I wanted so badly to stay in touch, hoping I’d finally say something, but you just disappeared. I’ll be honest—I even tried to find where you stayed, just to know you were still there, but I failed. I spent years curious about the path you chose, catching bits of your life from strangers.\n\nWhen I finally called you, it was supposed to be a "prank," but that was just my way in. We planned Surabhi’s send-off, but if I’m being completely honest? That wasn't for her. It was my own selfishness. I just wanted to see you again. I wanted to see who you’d become.\n\nThen we met again, but not how I expected. Uncle Raj and I go a long way back... and when I saw you then, you looked so tired. Your eyes were dried up, wearing that yellow dress. I know what it means to lose someone close. We shared the history of the people we loved, and after that, you started coming to me in my dreams.\n\nI dream about work, life, and spiritual things. I’ve even tried to find solutions to problems in my sleep, but I fail every time; none of them ever work. That’s why I don’t completely trust them. And yet, you keep coming back, again and again.\n\nBut dreams fade. People fade. Feelings fade... just like these words on the screen are fading right now. It feels like a curse, this heart of mine that won't give up.\n\nYou want to know how I felt when I saw you that last time?\n\nIt felt like this...`;
 
     let charIndex = 0;
     let currentYOffset = 0;
@@ -83,21 +83,32 @@ document.addEventListener("DOMContentLoaded", () => {
             const span = document.createElement('span');
             span.className = 'letter';
             span.textContent = char;
+            
             if (char === '\n') {
                 typedText.appendChild(document.createElement('br'));
-                currentYOffset -= 35;
+                currentYOffset -= 32; 
                 typedText.style.transform = `translateY(${currentYOffset}px)`;
             } else {
                 typedText.appendChild(span);
             }
-            setTimeout(() => span.classList.add('fade-out'), 5000);
+            
+            // Words stay visible for 7 seconds before fading
+            setTimeout(() => span.classList.add('fade-out'), 7000);
+            
             charIndex++;
-            setTimeout(startTyping, char === '.' ? 900 : 65);
+
+            // Natural typing rhythm: longer pauses for commas, periods, and questions
+            let delay = 60;
+            if (char === '.') delay = 800;
+            if (char === ',') delay = 400;
+            if (char === '?') delay = 1000;
+
+            setTimeout(startTyping, delay);
         } else {
-            setTimeout(triggerBigBangSequence, 6000);
+            // Wait 5 seconds after "It felt like this..." before the explosion
+            setTimeout(triggerBigBangSequence, 5000);
         }
     }
-
     // 6. Big Bang Sequence
     function triggerBigBangSequence() {
         const bang = document.createElement('div');
